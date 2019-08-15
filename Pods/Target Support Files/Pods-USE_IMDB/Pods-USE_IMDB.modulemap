@@ -1,0 +1,6 @@
+module Pods_USE_IMDB {
+  umbrella header "Pods-USE_IMDB-umbrella.h"
+
+  export *
+  module * { export * }
+}

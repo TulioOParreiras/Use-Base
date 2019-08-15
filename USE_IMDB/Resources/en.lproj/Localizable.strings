@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  USE_IMDB
+
+  Created by Usemobile on 14/08/19.
+  Copyright © 2019 Usemobile. All rights reserved.
+*/
+
+// MARK: Common
+
+"YEAR_TEXT" = "Year";
+"TYPE_TEXT" = "Type";
+"MISSING_TITLE_TEXT" = "Title unavailable";
+"MISSING_FIELD_TEXT" = "Not informed";
+"CAST_TEXT" = "Cast";
+"DIRECTORS_TEXT" = "Directors";
+"WRITERS_TEXT" = "Writers";
+"INVALID_URL_TEXT" = "Invalid URL";
+"IMAGE_FETCH_FAILURE_TEXT" = "Image fetch failed";
+"OK_TEXT" = "Ok";
+
+// MARK: SearchViewController
+"SEARCH_INSTRUCTIONS_TEXT" = "Search for a movie, series or episode by typing the name on the search box above!";
+
+
+// MARK: DetailsViewController
+
+"DETAILS_MEDIA_WITHOUT_IDENTIFIER_ERROR_MESSAGE" = "The selected media does not have all necessary fields";
