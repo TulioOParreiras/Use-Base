@@ -46,7 +46,7 @@ class DetailsViewController: UIViewController {
     
     // MARK: Methods
     
-    func getMediaDetails() {
+    public func getMediaDetails() {
         guard let objectId = self.mediaViewModel.objectId, !objectId.isEmpty else {
             self.showAlertCommon(message: "DETAILS_MEDIA_WITHOUT_IDENTIFIER_ERROR_MESSAGE".localized) { [weak self] _ in
                 guard let strongSelf = self else { return }
@@ -71,7 +71,7 @@ class DetailsViewController: UIViewController {
         self.detailsView.playProgress()
     }
     
-    func stopProgress() {
+    public func stopProgress() {
         self.detailsView.stopProgress()
     }
 

@@ -49,7 +49,7 @@ class SearchViewController: UIViewController {
     
     // MARK: Methods
 
-    func requestSearch(text: String) {
+    public func requestSearch(text: String) {
         API_Instant.search(text: text, success: { [weak self] (model) in
             guard let _self = self else { return }
             _self.searchView.updateViewModel(model.search?.compactMap({ MediaViewModel(mediaModel: $0)}) ?? [])
@@ -60,7 +60,7 @@ class SearchViewController: UIViewController {
         
     }
     
-    func presentMediaDetails(_ viewModel: MediaViewModel) {
+    public func presentMediaDetails(_ viewModel: MediaViewModel) {
         let detailsVC = DetailsViewController(mediaViewModel: viewModel)
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }
