@@ -8,6 +8,22 @@
 
 import UIKit
 
+class APIBase<T: BaseModel> {
+    
+}
+
+class NewClass: APIBase<NewModel> {
+    
+}
+
+class NewModel: BaseModel {
+    
+}
+
+class BaseModel: Codable {
+    
+}
+
 class SearchViewController: UIViewController {
     
     // MARK: UI Components
@@ -50,6 +66,8 @@ class SearchViewController: UIViewController {
     // MARK: Methods
 
     public func requestSearch(text: String) {
+        // TODO: Adicionar classe para gerenciar comunicação
+        
         API_Instant.search(text: text, success: { [weak self] (model) in
             guard let _self = self else { return }
             _self.searchView.updateViewModel(model.search?.compactMap({ MediaViewModel(mediaModel: $0)}) ?? [])
@@ -57,7 +75,6 @@ class SearchViewController: UIViewController {
             guard let _self = self else { return }
             _self.showAlertCommon(message: message)
         }
-        
     }
     
     public func presentMediaDetails(_ viewModel: MediaViewModel) {
@@ -79,7 +96,7 @@ extension SearchViewController: UISearchResultsUpdating {
 
 extension SearchViewController: SearchViewDelegate {
     
-    func searchView(_ searchView: SearchView, didSelect viewModel: MediaViewModel) {
+    func search(_ searchView: SearchView, didSelect viewModel: MediaViewModel) {
         self.searchController.searchBar.endEditing(false)
         self.presentMediaDetails(viewModel)
     }

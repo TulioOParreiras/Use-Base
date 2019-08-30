@@ -10,19 +10,37 @@ import Foundation
 import Alamofire
 
 public typealias JSON = [String: Any]
-public typealias Failure = ((Int, String) -> Void)
+public typealias FailureHandler = ((Int, String) -> Void)
+
+// TODO: Definir criptografia da API
+
+//enum APIType {
+//    case dev
+//    case prod
+//
+//    var path: String {
+//        switch self {
+//        case .dev:
+//            return "https://movie-database-imdb-alternative.p.rapidapi.com/"
+//        case .prod:
+//            return "prod"
+//        }
+//    }
+//}
 
 class API {
     
-    class func getMediaDetails(mediaId: String, success: ((MediaDetailsModel) -> Void)? = nil, failure: Failure? = nil) {
+    class func getMediaDetails(mediaId: String, success: ((MediaDetailsModel) -> Void)? = nil, failure: FailureHandler? = nil) {
         self.requestData(params: ["i": mediaId], success: success, failure: failure)
     }
     
-    class func search(text: String, success: ((SearchModel) -> Void)? = nil, failure: Failure? = nil) {
+    class func search(text: String, success: ((SearchModel) -> Void)? = nil, failure: FailureHandler? = nil) {
         self.requestData(params: ["s": text], success: success, failure: failure)
     }
     
-    internal class func requestData<T: Decodable>(params: JSON?, success: ((T) -> Void)? = nil, failure: Failure? = nil) {
+    internal class func requestData<T: Decodable>(params: JSON?, success: ((T) -> Void)? = nil, failure: FailureHandler? = nil) {
+        // TODO: Atualizar requisição (remover Alamofire)
+        
         let baseLink = "https://movie-database-imdb-alternative.p.rapidapi.com/"
         let header = self.getHeader()
         let parameters = self.updateParameters(params)

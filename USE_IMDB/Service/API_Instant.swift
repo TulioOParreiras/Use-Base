@@ -16,11 +16,11 @@ final class API_Instant: NSObject {
     
     var dataRequest: DataRequest?
     
-    class func search(text: String, success: ((SearchModel) -> Void)? = nil, failure: Failure? = nil) {
+    class func search(text: String, success: ((SearchModel) -> Void)? = nil, failure: FailureHandler? = nil) {
         self.requestInstant(params: ["s": text], success: success, failure: failure)
     }
     
-    private class func requestInstant<T: Decodable>(params: JSON?, success: ((T) -> Void)? = nil, failure: Failure? = nil) {
+    private class func requestInstant<T: Decodable>(params: JSON?, success: ((T) -> Void)? = nil, failure: FailureHandler? = nil) {
         let link          = "https://movie-database-imdb-alternative.p.rapidapi.com/"
         let header        = API.getHeader()
         let parameters    = API.updateParameters(params)

@@ -11,7 +11,7 @@ import UIKit
 // MARK: Protocols
 
 protocol SearchViewDelegate: class {
-    func searchView(_ searchView: SearchView, didSelect viewModel: MediaViewModel)
+    func search(_ view: SearchView, didSelect viewModel: MediaViewModel)
 }
 
 class SearchView: UIView {
@@ -31,6 +31,7 @@ class SearchView: UIView {
             self.tableView.reloadData()
         }
     }
+    
     private let kCellId = "SearchCell"
     private var selectedIndexPath: IndexPath?
     
@@ -78,7 +79,7 @@ extension SearchView: UITableViewDelegate {
         guard self.viewModel.count > row else { return }
         (tableView.cellForRow(at: indexPath) as? SearchCell)?.setContentSelected(true)
         self.selectedIndexPath = indexPath
-        self.delegate?.searchView(self, didSelect: self.viewModel[row])
+        self.delegate?.search(self, didSelect: self.viewModel[row])
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {

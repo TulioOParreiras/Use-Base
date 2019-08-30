@@ -33,6 +33,8 @@ class SearchCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
+        let labels: [UILabel?] = [self.lblTitle, self.lblYearTitle, self.lblYear, self.lblTypeTitle, self.lblType]
+        labels.forEach({ $0?.text = "" })
         self.imvPoster.contentMode = .scaleAspectFill
         self.lblYearTitle.text = "YEAR_TEXT".localized
         self.lblTypeTitle.text = "TYPE_TEXT".localized
@@ -49,12 +51,9 @@ class SearchCell: UITableViewCell {
     }
     
     public func setContentSelected(_ selected: Bool) {
+        let labels: [UILabel?] = [self.lblTitle, self.lblYearTitle, self.lblYear, self.lblTypeTitle, self.lblType]
         self.contentView.backgroundColor    = selected ? .lightGray : .clear
-        self.lblTitle.textColor             = selected ? .white : .black
-        self.lblYearTitle.textColor         = selected ? .white : .black
-        self.lblYear.textColor              = selected ? .white : .black
-        self.lblTypeTitle.textColor         = selected ? .white : .black
-        self.lblType.textColor              = selected ? .white : .black
+        labels.forEach({ $0?.textColor = selected ? .white : .black })
     }
     
 }

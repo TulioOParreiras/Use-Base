@@ -58,6 +58,8 @@ class USE_IMDBTests: XCTestCase {
         XCTAssertNotNil(vc.view, "nil")
     }
     
+    
+    
     func testDetailsView(){
         let model = MediaModel(objectId: "test01", poster: "poster01", title: "titulo01", type: "type01", year: "2000")
         let viewModel = MediaViewModel(mediaModel: model)
