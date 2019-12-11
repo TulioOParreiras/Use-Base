@@ -1,0 +1,22 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'IMDB_Viper' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  
+  pod 'Alamofire'
+  pod 'SkeletonView'
+
+  # Pods for IMDB_Viper
+
+  target 'IMDB_ViperTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'IMDB_ViperUITests' do
+    # Pods for testing
+  end
+
+end

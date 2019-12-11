@@ -1,0 +1,6 @@
+framework module Pods_IMDB_Viper_IMDB_ViperUITests {
+  umbrella header "Pods-IMDB_Viper-IMDB_ViperUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

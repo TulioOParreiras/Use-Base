@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-IMDB_Viper-IMDB_ViperUITests/Pods-IMDB_Viper-IMDB_ViperUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework
