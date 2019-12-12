@@ -10,6 +10,10 @@ import UIKit
 
 class SearchPresenter: SearchViewToPresenterProtocol {
     
+    func viewDidLoad() {
+        self.interactor?.fetchLocalSearch()
+    }
+    
     var view: SearchPresenterToViewProtocol?
     
     var interactor: SearchPresenterToInteractorProtocol?

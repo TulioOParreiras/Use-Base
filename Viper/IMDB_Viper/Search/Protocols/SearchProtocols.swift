@@ -21,12 +21,14 @@ protocol SearchInteractorToPresenterProtocol: class {
 protocol SearchPresenterToInteractorProtocol: class {
     var presenter: SearchInteractorToPresenterProtocol? {get set}
     func fetchSearch(text: String)
+    func fetchLocalSearch()
 }
 
 protocol SearchViewToPresenterProtocol: class {
     var view: SearchPresenterToViewProtocol? {get set}
     var interactor: SearchPresenterToInteractorProtocol? {get set}
     var router: SearchPresenterToRouterProtocol? {get set}
+    func viewDidLoad()
     func search(text: String)
     func showMediaDetails(for media: MediaEntity, from view: UIViewController)
 }

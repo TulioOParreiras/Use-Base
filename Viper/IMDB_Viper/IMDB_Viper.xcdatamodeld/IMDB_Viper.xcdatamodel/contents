@@ -8,13 +8,12 @@
         <attribute name="year" optional="YES" attributeType="String"/>
     </entity>
     <entity name="SearchEntity" representedClassName="SearchEntity" syncable="YES">
-        <attribute name="error" optional="YES" attributeType="String"/>
         <attribute name="response" optional="YES" attributeType="String"/>
         <attribute name="totalResults" optional="YES" attributeType="String"/>
         <relationship name="search" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MediaEntity"/>
     </entity>
     <elements>
         <element name="MediaEntity" positionX="-54" positionY="-9" width="128" height="118"/>
-        <element name="SearchEntity" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="SearchEntity" positionX="-63" positionY="-18" width="128" height="88"/>
     </elements>
 </model>

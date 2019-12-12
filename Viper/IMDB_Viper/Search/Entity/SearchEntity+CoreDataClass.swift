@@ -43,7 +43,7 @@ public class SearchEntity: NSManagedObject, Codable {
             var container = encoder.container(keyedBy: CodingKeys.self)
             try container.encode(self.response, forKey: .response)
             try container.encode(self.totalResults, forKey: .totalResults)
-    //        try (container.encode(self.search, forKey: .search) ?? NSSet())
+            try container.encode(self.searchArray, forKey: .search)
         }
     
     required public init(from decoder: Decoder) throws {

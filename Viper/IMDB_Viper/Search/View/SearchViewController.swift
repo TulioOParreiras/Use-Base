@@ -36,6 +36,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         self.title = "IMDB Search"
         self.setup()
+        self.presenter?.viewDidLoad()
     }
     
     // MARK: Methods

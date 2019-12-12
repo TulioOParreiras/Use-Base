@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 import Alamofire
 
 final class API_Instant: NSObject {
@@ -52,7 +53,6 @@ final class API_Instant: NSObject {
                             let json = try JSONSerialization.jsonObject(with: result)
                             if let error = (json as? [String: Any])?["Error"] as? String {
                                 API.printLog("error", message: error)
-//                                failure?((serializationError as NSError).code, error)
                             } else {
                                 API.printLog("error", message: serializationError)
                                 failure?((serializationError as NSError).code, serializationError.localizedDescription)

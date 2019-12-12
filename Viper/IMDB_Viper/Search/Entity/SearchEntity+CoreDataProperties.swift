@@ -17,7 +17,6 @@ extension SearchEntity {
         return NSFetchRequest<SearchEntity>(entityName: "SearchEntity")
     }
     
-    @NSManaged public var error: String?
     @NSManaged public var response: String?
     @NSManaged public var totalResults: String?
     @NSManaged public var search: NSSet?

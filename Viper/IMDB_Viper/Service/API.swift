@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 import Alamofire
 
 public typealias JSON = [String: Any]
@@ -42,7 +43,7 @@ class API {
                     if let context = CodingUserInfoKey.context {
                         decoder.userInfo[context] = persistentContainer?.viewContext
                     }
-                    let model = try decoder.decode(T.self, from: result)
+                    let model = try JSONDecoder().decode(T.self, from: result)
                     printLog("result", message: model)
                     success?(model)
                 } catch (let serializationError) {
