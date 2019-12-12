@@ -12,7 +12,7 @@ class DetailsInteractor: DetailsPresenterToInteractorProtocol {
     
     var presenter: DetailsInteractorToPresenterProtocol?
     
-    func fetchDetails(for media: MediaModel) {
+    func fetchDetails(for media: MediaEntity) {
         // Call API
         guard let objectId = media.objectId else {
             self.presenter?.detailsFetchFailed(errorMessage: "There is no identifier for the selected media")

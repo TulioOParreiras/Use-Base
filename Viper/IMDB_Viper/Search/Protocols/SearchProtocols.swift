@@ -9,12 +9,12 @@
 import UIKit
 
 protocol SearchPresenterToViewProtocol: class {
-    func showSearch(search: SearchModel)
+    func showSearch(search: SearchEntity)
     func showError(errorMessage: String)
 }
 
 protocol SearchInteractorToPresenterProtocol: class {
-    func searchFetched(search: SearchModel)
+    func searchFetched(search: SearchEntity)
     func searchFetchedFailed(errorMessage: String)
 }
 
@@ -28,10 +28,10 @@ protocol SearchViewToPresenterProtocol: class {
     var interactor: SearchPresenterToInteractorProtocol? {get set}
     var router: SearchPresenterToRouterProtocol? {get set}
     func search(text: String)
-    func showMediaDetails(for media: MediaModel, from view: UIViewController)
+    func showMediaDetails(for media: MediaEntity, from view: UIViewController)
 }
 
 protocol SearchPresenterToRouterProtocol: class {
     static func createModule() -> UIViewController
-    func showMediaDetails(for media: MediaModel, from view: UIViewController)
+    func showMediaDetails(for media: MediaEntity, from view: UIViewController)
 }

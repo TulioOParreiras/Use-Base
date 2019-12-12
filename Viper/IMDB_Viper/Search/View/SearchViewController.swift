@@ -22,7 +22,7 @@ class SearchViewController: UIViewController {
     var searchController = UISearchController()
     
     var presenter: SearchViewToPresenterProtocol?
-    var search: SearchModel? {
+    var search: SearchEntity? {
         didSet {
             self.viewInstructions.isHidden = self.search != nil
             self.tableView.reloadData()
@@ -71,7 +71,7 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: SearchPresenterToViewProtocol {
     
-    func showSearch(search: SearchModel) {
+    func showSearch(search: SearchEntity) {
         self.search = search
     }
     
@@ -93,7 +93,7 @@ extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
-        guard let media = self.search?.search?[row] else { return }
+        guard let media = self.search?.searchArray[row] else { return }
         self.presenter?.showMediaDetails(for: media, from: self)
         self.selectedIndexPath = nil
     }
@@ -120,7 +120,7 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.kCellId, for: indexPath) as! SearchCell
-        cell.media = self.search?.search?[indexPath.row]
+        cell.media = self.search?.searchArray[indexPath.row]
         return cell
     }
     

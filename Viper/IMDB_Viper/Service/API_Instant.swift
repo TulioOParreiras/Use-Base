@@ -16,7 +16,7 @@ final class API_Instant: NSObject {
     
     var dataRequest: DataRequest?
     
-    class func search(text: String, success: ((SearchModel) -> Void)? = nil, failure: FailureHandler? = nil) {
+    class func search(text: String, success: ((SearchEntity) -> Void)? = nil, failure: FailureHandler? = nil) {
         self.requestInstant(params: ["s": text], success: success, failure: failure)
     }
     
@@ -39,12 +39,29 @@ final class API_Instant: NSObject {
                 case .success(let result):
                     print(result)
                     do {
-                        let model = try JSONDecoder().decode(T.self, from: result)
+                        let persistentContainer = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+                        let decoder = JSONDecoder()
+                        if let context = CodingUserInfoKey.context {
+                            decoder.userInfo[context] = persistentContainer?.viewContext
+                        }
+                        let model = try decoder.decode(T.self, from: result)
                         API.printLog("result", message: model)
                         success?(model)
                     } catch (let serializationError) {
-                        API.printLog("error", message: serializationError)
-                        failure?((serializationError as NSError).code, serializationError.localizedDescription)
+                        do {
+                            let json = try JSONSerialization.jsonObject(with: result)
+                            if let error = (json as? [String: Any])?["Error"] as? String {
+                                API.printLog("error", message: error)
+//                                failure?((serializationError as NSError).code, error)
+                            } else {
+                                API.printLog("error", message: serializationError)
+                                failure?((serializationError as NSError).code, serializationError.localizedDescription)
+                            }
+                        } catch (let jsonError) {
+
+                            API.printLog("error", message: jsonError)
+                            failure?((serializationError as NSError).code, jsonError.localizedDescription)
+                        }
                     }
                 case .failure(URLError.cancelled):
                     break

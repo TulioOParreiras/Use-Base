@@ -27,7 +27,7 @@ class SearchRouter: SearchPresenterToRouterProtocol {
         return nav
     }
     
-    func showMediaDetails(for media: MediaModel, from view: UIViewController) {
+    func showMediaDetails(for media: MediaEntity, from view: UIViewController) {
         let detailsView = DetailsRouter.createModule()
         detailsView.media = media
         view.navigationController?.pushViewController(detailsView, animated: true)

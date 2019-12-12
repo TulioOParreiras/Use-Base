@@ -20,14 +20,14 @@ class SearchPresenter: SearchViewToPresenterProtocol {
         self.interactor?.fetchSearch(text: text)
     }
     
-    func showMediaDetails(for media: MediaModel, from view: UIViewController) {
+    func showMediaDetails(for media: MediaEntity, from view: UIViewController) {
         self.router?.showMediaDetails(for: media, from: view)
     }
     
 }
 
 extension SearchPresenter: SearchInteractorToPresenterProtocol {
-    func searchFetched(search: SearchModel) {
+    func searchFetched(search: SearchEntity) {
         self.view?.showSearch(search: search)
     }
     

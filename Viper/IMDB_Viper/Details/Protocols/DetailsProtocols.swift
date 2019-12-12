@@ -20,14 +20,14 @@ protocol DetailsInteractorToPresenterProtocol: class {
 
 protocol DetailsPresenterToInteractorProtocol: class {
     var presenter: DetailsInteractorToPresenterProtocol? { get set }
-    func fetchDetails(for media: MediaModel)
+    func fetchDetails(for media: MediaEntity)
 }
 
 protocol DetailsViewToPresenterProtocol: class {
     var view: DetailsPresenterToViewProtocol? { get set }
     var interactor: DetailsPresenterToInteractorProtocol? { get set }
     var router: DetailsPresenterToRouterProtocol? { get set }
-    func getDetails(for media: MediaModel)
+    func getDetails(for media: MediaEntity)
 }
 
 protocol DetailsPresenterToRouterProtocol: class {

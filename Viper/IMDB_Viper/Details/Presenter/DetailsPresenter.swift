@@ -14,7 +14,7 @@ class DetailsPresenter: DetailsViewToPresenterProtocol {
     var interactor: DetailsPresenterToInteractorProtocol?
     var router: DetailsPresenterToRouterProtocol?
     
-    func getDetails(for media: MediaModel) {
+    func getDetails(for media: MediaEntity) {
         self.interactor?.fetchDetails(for: media)
     }
     

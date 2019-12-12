@@ -42,7 +42,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var lblWriters: UILabel!
     
     var presenter: DetailsViewToPresenterProtocol?
-    var media: MediaModel?
+    var media: MediaEntity?
     var mediaDetails: MediaDetailsModel? {
         didSet {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

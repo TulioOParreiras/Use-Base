@@ -18,7 +18,7 @@ class API {
         self.requestData(params: ["i": mediaId], success: success, failure: failure)
     }
     
-    class func search(text: String, success: ((SearchModel) -> Void)? = nil, failure: FailureHandler? = nil) {
+    class func search(text: String, success: ((SearchEntity) -> Void)? = nil, failure: FailureHandler? = nil) {
         self.requestData(params: ["s": text], success: success, failure: failure)
     }
     
@@ -37,7 +37,12 @@ class API {
             case .success(let result):
                 print(result)
                 do {
-                    let model = try JSONDecoder().decode(T.self, from: result)
+                    let persistentContainer = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+                    let decoder = JSONDecoder()
+                    if let context = CodingUserInfoKey.context {
+                        decoder.userInfo[context] = persistentContainer?.viewContext
+                    }
+                    let model = try decoder.decode(T.self, from: result)
                     printLog("result", message: model)
                     success?(model)
                 } catch (let serializationError) {

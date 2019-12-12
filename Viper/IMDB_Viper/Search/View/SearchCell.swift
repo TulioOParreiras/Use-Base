@@ -22,7 +22,7 @@ class SearchCell: UITableViewCell {
     
     // MARK: Properties
     
-    var media: MediaModel? {
+    var media: MediaEntity? {
         didSet {
             self.fillMedia()
         }
